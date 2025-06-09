@@ -1,0 +1,12 @@
+1) Creo services/posts.service.ts per i servizi
+2) Creo models/posts.ts dove inserisco i dati dei post/categorie tramite export type o export interface
+3) Dentro posts.service creo un metodo che restituisce i Post e un metodo che restituisce le categorie 
+   Genero components/posts-list e components/posts-detail e aggiungo bootstrap in index.html
+4) Dentro posts-list.component.ts inietto il servizio PostsService per poter accedere ai dati dei post tramite inject o constructor
+5) Dentro a posts-list.component.ts richiamo il metodo getPosts() del servizio per ottenere i post. Aggiungo a export: implements OnInit e inserisco il metodo    getPosts() all'interno di esso e mi creo la proprietà su cui mi baserò per creare l'html (posts: Post[] = []; e categories: PostCategory[] = [];)
+6) Dentro a posts-detail.component.ts (che mi fa vedere i dettagli del post), dentro export metto @Input() post?: Post;
+7) Creo il file html di posts-detail per i dettagli del post tramite @if (post)
+8) Vado in posts-list.component.html per creare il ciclo for (@for (p of posts; track $index)) dove richiamo <app-post-detail> che si importerà in posts-   list.component.ts
+9) Vado in app.component.html e inserisco <app-posts-list> che si importerà in app.component.ts
+10) Nel servizio (posts.service.ts) creo una funzione (getPostsByCategory(category: PostCategory){}) che mi ritorna i dati filtrati per categoria
+11) In posts-list.component.html creo i bottoni e poi un ciclo for sulle categorie

@@ -1,0 +1,14 @@
+<!-- (PASSAGGIO 8) IN QUESTO FILE DEVO CREARE UN COMPONENTE PER LISTARE I POST, TRAMITE IL CICLO FOR
+(PASSAGGIO 11) CREO DEI BOTTONI PER LE CATEGORIE E UN CICLO FOR PER LE CATEGORIE  -->
+<h2>Posts</h2>
+<div class="btn-group mb-2" role="group"> 
+    @for (c of categories; track $index) {
+        <button type="button" class="btn btn-outline-secondary">
+            {{c.title}}
+        </button>
+    }
+</div>
+@for (p of posts; track $index){
+    <!-- qui devo mostrare un componente PostsDetail, passandogli il post -->
+    <app-posts-detail [post]="p"></app-posts-detail>
+}
