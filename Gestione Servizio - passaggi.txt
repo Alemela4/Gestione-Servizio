@@ -10,3 +10,15 @@
 9) Vado in app.component.html e inserisco <app-posts-list> che si importerà in app.component.ts
 10) Nel servizio (posts.service.ts) creo una funzione (getPostsByCategory(category: PostCategory){}) che mi ritorna i dati filtrati per categoria
 11) In posts-list.component.html creo i bottoni e poi un ciclo for sulle categorie
+12) In posts-list.component.ts creo una funzione che cliccando sui bottoni mi permette di filtrare i post per categoria
+13) In posts-list.component.html richiamo la funzione creata al passaggio 12
+14) In posts-list.component.html creo un bottone per rivedere tutti i post senza dividerli in categoria
+15) In posts-list.component.ts aggiungo alla funzione un else, in modo che se non viene passata una categoria, recupero tutti i post
+16) In posts-list.component.ts importo CommonModule per farsì di poter usare NgClass poi in posts-list.component.html
+17) In posts.service.ts gestisco la logica della selezione della categoria
+18) In posts-list.component.html aggiungo NgClass e active per vedere se la categoria è selezionata o sul pulsante tutti se la categoria non è selezionata
+19) In posts.service.ts gestisco la logica dei preferiti e creo una funzione per aggiungere i preferiti e una per rimuoverli dai preferiti e una per svuotare i preferiti
+20) In posts-detail.component.ts aggiungo injiect per iniettare il servizio
+21) In posts-detail.component.html aggiungo (click)="" per aggiungere il post ai preferiti
+22) In app.component.html aggiungo <app-preferiti> e aggiungo inject a preferiti.component.ts
+23) In preferiti.component.html creo un ciclo for e al click sul bottone rimuovi dai preferiti e creo un if e sull'altro bottone svuota dai preferiti

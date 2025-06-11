@@ -1,4 +1,4 @@
-<!-- (PASSAGGIO 7) QUESTO FILE SERVE PER IL DETTAGLIO DI UN POST -->
+<!-- (PASSAGGIO 7) QUESTO FILE SERVE PER IL DETTAGLIO DI UN POST. (PASSAGGIO 21) AGGIUNGO (CLICK)="" PER AGGIUNGERE AI PREFERITI IL POST -->
 @if (post) {
     <div  class="card mb-2">
         <div class="card-body">
@@ -6,7 +6,11 @@
             <h6 class="card-subtitle mb-2 text-muted">{{post.category}}</h6>
             <em>Data pubblicazione: {{post.date | date}}</em>
             <br>
-            <button type="button" class="btn btn-primary">Aggingi a preferiti</button>
+            <button type="button" 
+                class="btn btn-primary"
+                (click)="ps.aggiungiAPreferiti(post)">
+                Aggingi a preferiti
+            </button>
         </div>
     </div>
 }

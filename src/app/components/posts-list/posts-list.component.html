@@ -1,9 +1,19 @@
 <!-- (PASSAGGIO 8) IN QUESTO FILE DEVO CREARE UN COMPONENTE PER LISTARE I POST, TRAMITE IL CICLO FOR
-(PASSAGGIO 11) CREO DEI BOTTONI PER LE CATEGORIE E UN CICLO FOR PER LE CATEGORIE  -->
+(PASSAGGIO 11) CREO DEI BOTTONI PER LE CATEGORIE E UN CICLO FOR PER LE CATEGORIE. (PASSAGGIO 13) INSERISCO IL CLICK CON ALL'INTERNO LA FUNZIONE CREATA NEL POSTS-LIST.COMPONENT.TS (NEL PASSAGGIO 12). (PASSAGGIO 14) CREO UN BOTTONE CHE MI RIPORTA ALLA LISTA DEI POST. (PASSAGGIO 18) AGGIUNGO NG CLASS E APPLICO LA CLASSE ACTIVE SE LA CATEGORIA E' SELEZIONATA O SUL PULSANTE TUTTI SE LA CATEGORIA NON E' SELEZIONATA -->
 <h2>Posts</h2>
-<div class="btn-group mb-2" role="group"> 
+<div class="btn-group mb-2" role="group">
+    <button type="button" 
+        class="btn btn-outline-secondary" 
+        [ngClass]="{active: ps.selectedCategory == undefined}"
+        (click)="filter()">
+        Tutti
+    </button>
+    
     @for (c of categories; track $index) {
-        <button type="button" class="btn btn-outline-secondary">
+        <button type="button" 
+            class="btn btn-outline-secondary" 
+            [ngClass]="{active: ps.selectedCategory == c}" 
+            (click)="filter(c)">
             {{c.title}}
         </button>
     }

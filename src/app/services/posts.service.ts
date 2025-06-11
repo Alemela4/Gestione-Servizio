@@ -107,13 +107,21 @@ export class PostsService {
       "title": "Moda"
     }
   ]
-}
+  };
+
+  // (PASSAGGIO 17) GESTISCO LA LOGICA DELLA SELEZIONE DELLA CATEGORIA
+  selectedCategory?: PostCategory; // proprietà che mi serve per tenere traccia della categoria selezionata
+
+  // (PASSAGGIO 19) GESTISCO LA LOGICA DEI PREFERITI
+  preferiti: Post[] = []; // proprietà che mi serve per tenere traccia dei post preferiti
+
   constructor() { }
 
   // (PASSAGGIO 3) CREO UN METODO CHE RESTITUISCE I POST
   // Questo metodo restituisce un array di Post
   getPosts(): Post[] {
     // qui normalmente ci sarebbe una richiesta ajax per recuperare i dati da un server
+    this.selectedCategory = undefined; // resetto la categoria selezionata quando recupero i post
     return this.data.posts; 
   }
 
@@ -124,6 +132,30 @@ export class PostsService {
 
   // (PASSAGGIO 10) CREO UNA FUNZIONE CHE MI RITORNA I DATI FILTRATI PER CATEGORIA
   getPostsByCategory(category: PostCategory){
+    this.selectedCategory = category; // imposto la categoria selezionata
     return this.data.posts.filter(x => x.category === category.id); // x è un post, x.category è la categoria del post, category.id è l'id della categoria passata come parametro
+  }
+
+  // (PASSAGGIO 19) CREO UNA FUNZIONE CHE MI PERMETTE DI AGGIUNGERE UN POST AI PREFERITI
+  aggiungiAPreferiti(post: Post) {
+    if (!this.preferiti.includes(post)) { // controllo se il post non è già nei preferiti
+      this.preferiti.push(post); // aggiungo il post ai preferiti
+    }
+  }
+
+  // (PASSAGGIO 19) CREO UNA FUNZIONE CHE MI PERMETTE DI RIMUOVERE UN POST DAI PREFERITI
+  rimuoviDaPreferiti(post: Post) {
+    // alternativa 1 con find:
+    // let p = this.preferiti.find(x => x.id == post.id);
+    // if (p) {
+    //   this.preferiti.splice(this.preferiti.indexOf(p), 1);
+    // }
+
+    // alternativa 2 con filter:
+    this.preferiti = this.preferiti.filter(p => p != post); // rimuovo il post dai preferiti
+  }
+
+  svuotaPreferiti() {
+    this.preferiti = []; // svuoto l'array dei preferiti
   }
 }
